@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing">
+    <test name="Homework">
+        <classes>
+            <class name="com.vmo.nopcommerce.features.register.UserRegistrationTest">
+                <methods>
+                    <include name="User_registration"></include>
+                </methods>
+            </class>
+<!--            <class name="com.vmo.nopcommerce.features.homepage.ProductTest"/>-->
+            <class name="com.vmo.nopcommerce.features.login.PasswordRecoveryTest"/>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+

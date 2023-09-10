@@ -1,26 +1,27 @@
 package com.vmo.nopcommerce.features.register;
 
 import com.vmo.nopcommerce.common.BaseTest;
+import com.vmo.nopcommerce.pageobject.HomePageGenerator;
+import com.vmo.nopcommerce.pageobject.RegistrationPageGenerator;
 import com.vmo.nopcommerce.pageobject.homepage.HomePageObject;
-import com.vmo.nopcommerce.pageobject.homepage.LoginPageObject;
-import com.vmo.nopcommerce.pageobject.registration.RegistrationPageObject;
+import com.vmo.nopcommerce.pageobject.registrationpage.RegistrationPageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class UserRegistrationTest extends BaseTest {
-    private WebDriver driver;
+    private WebDriver driver=super.driver;
     private RegistrationPageObject registrationPage;
     private HomePageObject homePage;
 
-    @BeforeSuite
+    @BeforeTest
     public void setUp(){
-        driver =  new ChromeDriver();
-        registrationPage = new RegistrationPageObject(driver);
-        homePage = new HomePageObject(driver);
+//        driver =  new ChromeDriver();
+        registrationPage = RegistrationPageGenerator.getRegistrationPageObject(driver);
+        homePage = HomePageGenerator.getHomePageObject(driver);
         driver.get("https://demo.nopcommerce.com/");
     }
 
