@@ -24,7 +24,7 @@ public class SoftwarePageObject extends BasePage {
         return getSelectedItemInDefaultDropdown(driver, SoftwarePageUI.SORT_BY);
     }
 
-    public void isSortZtoAWorked() {
+    public boolean isSortZtoAWorked() {
         overrideImplicitTimeOut(driver, GlobalConstants.LONG_TIMEOUT);
         List<String> productNames = getTextElements(driver, SoftwarePageUI.PRODUCT_LIST);
         List<String> sortedProductNames = new ArrayList<>(productNames);
@@ -32,9 +32,9 @@ public class SoftwarePageObject extends BasePage {
         System.out.println(productNames);
         System.out.println(sortedProductNames);
         if (productNames.equals(sortedProductNames)) {
-            System.out.println("Sorting from Z to A is correct.");
+            return true;
         } else {
-            System.out.println("Sorting verification failed.");
+            return false;
         }
     }
 

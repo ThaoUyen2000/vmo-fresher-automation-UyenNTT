@@ -63,7 +63,7 @@ public class ProductTest extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/software");
         softwarePage.selectSortBy("Name: Z to A");
         softwarePage.isSortSelected("Name: Z to A");
-        softwarePage.isSortZtoAWorked();
+        verifyTrue(softwarePage.isSortZtoAWorked());
     }
 
 //    @AfterSuite
