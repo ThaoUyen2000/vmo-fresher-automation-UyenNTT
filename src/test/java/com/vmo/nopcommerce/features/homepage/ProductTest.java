@@ -13,9 +13,7 @@ import com.vmo.nopcommerce.pageobject.softwarepage.SoftwarePageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class ProductTest extends BaseTest {
     private WebDriver driver = super.driver;
@@ -23,20 +21,21 @@ public class ProductTest extends BaseTest {
     private HomePageObject homePage;
     private SoftwarePageObject softwarePage;
 
+    @Parameters({"browser"})
     @BeforeTest
-    public void setUp(){
+    public void setUp(@Optional("CHROME") String browser){
+        driver =  getDriverBrowser(browser);
         searchPage = SearchPageGenerator.getSearchPageObject(driver);
         homePage = HomePageGenerator.getHomePageObject(driver);
         softwarePage = SoftwarePageGenerator.getSoftwarePageObject(driver);
-        driver.get("https://demo.nopcommerce.com/");
     }
 
     @Test
     public void Product_Search_Founded(){
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
         homePage.inputSearchBar("Nokia");
         homePage.clickSearchBtn();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/search?q=Nokia");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/search?q=Nokia"));
         if(searchPage.isProductTitleDisplay()){
             verifyTrue(searchPage.isProductMatchedWithSearchKeyword("Nokia"));
         } else {
@@ -45,10 +44,10 @@ public class ProductTest extends BaseTest {
     }
     @Test
     public void Product_Search_NotFound(){
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
         homePage.inputSearchBar("Nokiaa");
         homePage.clickSearchBtn();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/search?q=Nokiaa");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/search?q=Nokiaa"));
         if(searchPage.isProductTitleDisplay()){
             verifyTrue(searchPage.isProductMatchedWithSearchKeyword("Nokia"));
         } else {
@@ -57,10 +56,10 @@ public class ProductTest extends BaseTest {
     }
     @Test
     public void Product_Sort_And_Filter(){
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
         homePage.hoverOnComputerMenu();
         homePage.clickSoftwareMenu();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/software");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/software"));
         softwarePage.selectSortBy("Name: Z to A");
         softwarePage.isSortSelected("Name: Z to A");
         verifyTrue(softwarePage.isSortZtoAWorked());

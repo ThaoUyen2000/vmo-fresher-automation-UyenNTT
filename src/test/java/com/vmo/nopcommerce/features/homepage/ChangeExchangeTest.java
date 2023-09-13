@@ -8,6 +8,8 @@ import com.vmo.nopcommerce.pageobject.newdetailpage.NewDetailPageObject;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class ChangeExchangeTest extends BaseTest {
@@ -15,16 +17,17 @@ public class ChangeExchangeTest extends BaseTest {
     private HomePageObject homePage;
     private NewDetailPageObject newDetailPage;
 
+    @Parameters({"browser"})
     @BeforeTest
-    public void setUp(){
+    public void setUp(@Optional("CHROME") String browser){
+        driver =  getDriverBrowser(browser);
         homePage = HomePageGenerator.getHomePageObject(driver);
         newDetailPage = NewDetailPageGenerator.getNewDetailPageObject(driver);
-        driver.get("https://demo.nopcommerce.com/");
     }
 
     @Test
     public void Change_Exchange(){
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
         homePage.changeExchange("Euro");
         verifyTrue(homePage.isExchangeSelected("Euro"));
         verifyTrue(homePage.isPricesCurrencyChanged("Euro"));

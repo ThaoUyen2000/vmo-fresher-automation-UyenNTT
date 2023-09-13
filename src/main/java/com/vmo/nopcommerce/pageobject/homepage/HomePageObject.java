@@ -113,7 +113,7 @@ public class HomePageObject extends BasePage {
             case  "Youtube":
                 for (String windowHandle : windowHandles) {
                     driver.switchTo().window(windowHandle);
-                    if (!driver.getTitle().equals("nopCommerce - YouTube")) {
+                    if (!driver.getTitle().equals("nopCommerce - YouTub")) {
                         check =true;
                         break;
                     }

@@ -10,9 +10,7 @@ import com.vmo.nopcommerce.pageobject.softwarepage.SoftwarePageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class PasswordRecoveryTest extends BaseTest {
     private WebDriver driver = super.driver;
@@ -20,12 +18,13 @@ public class PasswordRecoveryTest extends BaseTest {
     private HomePageObject homePage;
     private LoginPageObject loginPage;
 
+    @Parameters({"browser"})
     @BeforeTest
-    public void setUp(){
+    public void setUp(@Optional("CHROME") String browser){
+        driver =  getDriverBrowser(browser);
         passwordRecoveryPage = PasswordRecoveryPageGenerator.getPasswordRecoverynPageObject(driver);
         homePage = HomePageGenerator.getHomePageObject(driver);
         loginPage = LoginPageGenerator.getLoginPageObject(driver);
-        driver.get("https://demo.nopcommerce.com/");
     }
     @Test
     public void Password_Recovery(){

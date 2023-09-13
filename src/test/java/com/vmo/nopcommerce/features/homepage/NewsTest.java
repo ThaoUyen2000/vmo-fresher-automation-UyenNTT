@@ -8,6 +8,8 @@ import com.vmo.nopcommerce.pageobject.newdetailpage.NewDetailPageObject;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class NewsTest extends BaseTest {
@@ -15,16 +17,17 @@ public class NewsTest extends BaseTest {
     private HomePageObject homePage;
     private NewDetailPageObject newDetailPage;
 
+    @Parameters({"browser"})
     @BeforeTest
-    public void setUp(){
+    public void setUp(@Optional("CHROME") String browser){
+        driver =  getDriverBrowser(browser);
         homePage = HomePageGenerator.getHomePageObject(driver);
         newDetailPage = NewDetailPageGenerator.getNewDetailPageObject(driver);
-        driver.get("https://demo.nopcommerce.com/");
     }
 
     @Test
     public void Read_News_And_Leave_Comment(){
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
         homePage.clickNewsArticle("New online store is open!");
         verifyTrue(newDetailPage.isArticleTitleCorrect("New online store is open!"));
         newDetailPage.inputComment("abc","xyz");

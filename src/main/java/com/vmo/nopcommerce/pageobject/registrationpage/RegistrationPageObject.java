@@ -21,7 +21,7 @@ public class RegistrationPageObject extends BasePage {
         selectItemInDefaultDropdownByText(driver,RegistrationPageUI.SELECT_DAY,"6");
         selectItemInDefaultDropdownByText(driver,RegistrationPageUI.SELECT_MONTH,"October");
         selectItemInDefaultDropdownByText(driver,RegistrationPageUI.SELECT_YEAR,"2000");
-        sendKeyToElement(driver,RegistrationPageUI.EMAIL_INPUT,"uyenntt1@yopmail.com");
+        sendKeyToElement(driver,RegistrationPageUI.EMAIL_INPUT,"uyenntt3@yopmail.com");
         sendKeyToElement(driver,RegistrationPageUI.PASSWORD_INPUT,"Uyen06102000");
         sendKeyToElement(driver,RegistrationPageUI.CONFIRM_PASSWORD_INPUT,"Uyen06102000");
     }

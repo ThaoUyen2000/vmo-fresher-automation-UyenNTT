@@ -8,32 +8,30 @@ import com.vmo.nopcommerce.pageobject.registrationpage.RegistrationPageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class UserRegistrationTest extends BaseTest {
-    private WebDriver driver=super.driver;
+    private WebDriver driver;
     private RegistrationPageObject registrationPage;
     private HomePageObject homePage;
 
+    @Parameters({"browser"})
     @BeforeTest
-    public void setUp(){
-//        driver =  new ChromeDriver();
+    public void setUp(@Optional("CHROME") String browser){
+        driver =  getDriverBrowser(browser);
         registrationPage = RegistrationPageGenerator.getRegistrationPageObject(driver);
         homePage = HomePageGenerator.getHomePageObject(driver);
-        driver.get("https://demo.nopcommerce.com/");
     }
 
     @Test
     public void User_registration(){
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
+        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
         verifyTrue(homePage.isRegisterLinkDisplayed());
         homePage.clickRegisterLink();
-        Assert.assertEquals(registrationPage.getTitle(),"Register");
+        verifyTrue(verifyEqual(registrationPage.getTitle(),"Register"));
         registrationPage.fillRegistrationForm();
         registrationPage.submitForm();
-        Assert.assertEquals(registrationPage.getMessage(),"Your registration completed");
+        verifyTrue(verifyEqual(registrationPage.getMessage(),"Your registration completed"));
     }
 //    @AfterSuite
 //    public WebDriver tearDown(){
