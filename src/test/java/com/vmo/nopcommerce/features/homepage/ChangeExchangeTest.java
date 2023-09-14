@@ -27,7 +27,7 @@ public class ChangeExchangeTest extends BaseTest {
 
     @Test
     public void Change_Exchange(){
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
         homePage.changeExchange("Euro");
         verifyTrue(homePage.isExchangeSelected("Euro"));
         verifyTrue(homePage.isPricesCurrencyChanged("Euro"));

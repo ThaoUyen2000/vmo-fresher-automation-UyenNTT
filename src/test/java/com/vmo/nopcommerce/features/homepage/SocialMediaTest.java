@@ -24,7 +24,7 @@ public class SocialMediaTest extends BaseTest {
 
     @Test
     public void Change_Exchange(){
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
         homePage.clickSocialMedia("Facebook");
         verifyTrue(homePage.isCorrectSocialMediaOpened("Facebook"));
     }

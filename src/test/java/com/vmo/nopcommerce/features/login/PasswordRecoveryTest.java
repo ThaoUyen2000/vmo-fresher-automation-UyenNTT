@@ -28,11 +28,11 @@ public class PasswordRecoveryTest extends BaseTest {
     }
     @Test
     public void Password_Recovery(){
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
         homePage.clickLoginLink();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/login?returnUrl=%2F");
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/login?returnUrl=%2F");
         loginPage.clickForgotPasswordLink();
-        Assert.assertEquals(driver.getCurrentUrl(),"https://demo.nopcommerce.com/passwordrecovery");
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/passwordrecovery");
         passwordRecoveryPage.inputEmailAddress("uyenntt1@yopmail.com");
         passwordRecoveryPage.clickRecoverBtn();
         verifyTrue(passwordRecoveryPage.isNotificationCorrect("Email with instructions has been sent to you."));

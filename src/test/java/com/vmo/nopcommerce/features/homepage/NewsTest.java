@@ -27,7 +27,7 @@ public class NewsTest extends BaseTest {
 
     @Test
     public void Read_News_And_Leave_Comment(){
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
         homePage.clickNewsArticle("New online store is open!");
         verifyTrue(newDetailPage.isArticleTitleCorrect("New online store is open!"));
         newDetailPage.inputComment("abc","xyz");

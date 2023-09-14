@@ -16,8 +16,8 @@ public class BaseTest{
     protected  void verifyTrue(boolean value){
         Assert.assertTrue(value);
     }
-    protected  boolean verifyEqual(String current,String expected){
-        return current.equals(expected);
+    protected  void verifyEqual(String current,String expected){
+         Assert.assertEquals(current,expected);
     }
     protected WebDriver getDriverBrowser(String browser){
         driver = new LocalFactory().createDriver(browser);

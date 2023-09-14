@@ -32,10 +32,10 @@ public class ProductTest extends BaseTest {
 
     @Test
     public void Product_Search_Founded(){
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
         homePage.inputSearchBar("Nokia");
         homePage.clickSearchBtn();
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/search?q=Nokia"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/search?q=Nokia");
         if(searchPage.isProductTitleDisplay()){
             verifyTrue(searchPage.isProductMatchedWithSearchKeyword("Nokia"));
         } else {
@@ -44,10 +44,10 @@ public class ProductTest extends BaseTest {
     }
     @Test
     public void Product_Search_NotFound(){
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
         homePage.inputSearchBar("Nokiaa");
         homePage.clickSearchBtn();
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/search?q=Nokiaa"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/search?q=Nokiaa");
         if(searchPage.isProductTitleDisplay()){
             verifyTrue(searchPage.isProductMatchedWithSearchKeyword("Nokia"));
         } else {
@@ -56,10 +56,10 @@ public class ProductTest extends BaseTest {
     }
     @Test
     public void Product_Sort_And_Filter(){
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
         homePage.hoverOnComputerMenu();
         homePage.clickSoftwareMenu();
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/software"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/software");
         softwarePage.selectSortBy("Name: Z to A");
         softwarePage.isSortSelected("Name: Z to A");
         verifyTrue(softwarePage.isSortZtoAWorked());

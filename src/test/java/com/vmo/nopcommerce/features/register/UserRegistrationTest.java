@@ -25,13 +25,13 @@ public class UserRegistrationTest extends BaseTest {
 
     @Test
     public void User_registration(){
-        verifyTrue(verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/"));
+        verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
         verifyTrue(homePage.isRegisterLinkDisplayed());
         homePage.clickRegisterLink();
-        verifyTrue(verifyEqual(registrationPage.getTitle(),"Register"));
+        verifyEqual(registrationPage.getTitle(),"Register");
         registrationPage.fillRegistrationForm();
         registrationPage.submitForm();
-        verifyTrue(verifyEqual(registrationPage.getMessage(),"Your registration completed"));
+        verifyEqual(registrationPage.getMessage(),"Your registration completed");
     }
 //    @AfterSuite
 //    public WebDriver tearDown(){
