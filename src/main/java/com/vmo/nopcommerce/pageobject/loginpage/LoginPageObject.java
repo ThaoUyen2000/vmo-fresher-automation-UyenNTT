@@ -1,6 +1,7 @@
 package com.vmo.nopcommerce.pageobject.loginpage;
 
 import com.vmo.nopcommerce.common.BasePage;
+import com.vmo.nopcommerce.helper.Log;
 import com.vmo.nopcommerce.interfaces.LoginPageUI;
 import org.openqa.selenium.WebDriver;
 
@@ -12,6 +13,7 @@ public class LoginPageObject extends BasePage {
     }
 
     public void clickForgotPasswordLink() {
+        Log.info("Click forgot password link");
         clickToElement(driver, LoginPageUI.FORGET_PASSWORD_LINK);
     }
 }

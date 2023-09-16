@@ -1,6 +1,7 @@
 package com.vmo.nopcommerce.features.register;
 
 import com.vmo.nopcommerce.common.BaseTest;
+import com.vmo.nopcommerce.helper.Log;
 import com.vmo.nopcommerce.pageobject.HomePageGenerator;
 import com.vmo.nopcommerce.pageobject.RegistrationPageGenerator;
 import com.vmo.nopcommerce.pageobject.homepage.HomePageObject;
@@ -18,6 +19,7 @@ public class UserRegistrationTest extends BaseTest {
     @Parameters({"browser"})
     @BeforeTest
     public void setUp(@Optional("CHROME") String browser){
+        Log.info("Setup");
         driver =  getDriverBrowser(browser);
         registrationPage = RegistrationPageGenerator.getRegistrationPageObject(driver);
         homePage = HomePageGenerator.getHomePageObject(driver);
@@ -33,8 +35,9 @@ public class UserRegistrationTest extends BaseTest {
         registrationPage.submitForm();
         verifyEqual(registrationPage.getMessage(),"Your registration completed");
     }
-//    @AfterSuite
-//    public WebDriver tearDown(){
-//        return new ChromeDriver();
-//    }
+    @AfterTest
+    public void tearDown(){
+        Log.info("Tear down");
+        driver.quit();
+    }
 }

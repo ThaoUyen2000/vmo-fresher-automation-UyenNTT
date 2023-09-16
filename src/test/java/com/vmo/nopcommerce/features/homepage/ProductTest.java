@@ -2,6 +2,7 @@ package com.vmo.nopcommerce.features.homepage;
 
 import com.vmo.nopcommerce.common.BaseTest;
 import com.vmo.nopcommerce.common.GlobalConstants;
+import com.vmo.nopcommerce.helper.Log;
 import com.vmo.nopcommerce.pageobject.HomePageGenerator;
 import com.vmo.nopcommerce.pageobject.RegistrationPageGenerator;
 import com.vmo.nopcommerce.pageobject.SearchPageGenerator;
@@ -16,7 +17,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class ProductTest extends BaseTest {
-    private WebDriver driver = super.driver;
+    private WebDriver driver;
     private SearchPageObject searchPage;
     private HomePageObject homePage;
     private SoftwarePageObject softwarePage;
@@ -24,6 +25,7 @@ public class ProductTest extends BaseTest {
     @Parameters({"browser"})
     @BeforeTest
     public void setUp(@Optional("CHROME") String browser){
+        Log.info("Setup");
         driver =  getDriverBrowser(browser);
         searchPage = SearchPageGenerator.getSearchPageObject(driver);
         homePage = HomePageGenerator.getHomePageObject(driver);
@@ -61,12 +63,12 @@ public class ProductTest extends BaseTest {
         homePage.clickSoftwareMenu();
         verifyEqual(driver.getCurrentUrl(),"https://demo.nopcommerce.com/software");
         softwarePage.selectSortBy("Name: Z to A");
-        softwarePage.isSortSelected("Name: Z to A");
+        verifyTrue(softwarePage.isSortSelected("Name: Z to A"));
         verifyTrue(softwarePage.isSortZtoAWorked());
     }
-
-//    @AfterSuite
-//    public WebDriver tearDown(){
-//        return new ChromeDriver();
-//    }
+    @AfterTest
+    public void tearDown(){
+        Log.info("Tear down");
+        driver.quit();
+    }
 }

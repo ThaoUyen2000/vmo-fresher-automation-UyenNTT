@@ -15,6 +15,7 @@
         <selenium-version>4.11.0</selenium-version>
         <testng-version>7.8.0</testng-version>
         <javafaker-version>1.0.2</javafaker-version>
+        <log4j-version>2.20.0</log4j-version>
     </properties>
 
     <dependencies>
@@ -36,6 +37,12 @@
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
             <version>${javafaker-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-version}</version>
         </dependency>
     </dependencies>
 </project>

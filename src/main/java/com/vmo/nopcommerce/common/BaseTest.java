@@ -1,6 +1,7 @@
 package com.vmo.nopcommerce.common;
 
 import com.vmo.nopcommerce.factoryEnvironment.LocalFactory;
+import com.vmo.nopcommerce.helper.Log;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

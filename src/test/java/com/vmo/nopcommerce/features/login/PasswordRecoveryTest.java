@@ -1,6 +1,7 @@
 package com.vmo.nopcommerce.features.login;
 
 import com.vmo.nopcommerce.common.BaseTest;
+import com.vmo.nopcommerce.helper.Log;
 import com.vmo.nopcommerce.pageobject.*;
 import com.vmo.nopcommerce.pageobject.homepage.HomePageObject;
 import com.vmo.nopcommerce.pageobject.loginpage.LoginPageObject;
@@ -13,7 +14,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class PasswordRecoveryTest extends BaseTest {
-    private WebDriver driver = super.driver;
+    private WebDriver driver;
     private PasswordRecoveryPageObject passwordRecoveryPage;
     private HomePageObject homePage;
     private LoginPageObject loginPage;
@@ -21,6 +22,7 @@ public class PasswordRecoveryTest extends BaseTest {
     @Parameters({"browser"})
     @BeforeTest
     public void setUp(@Optional("CHROME") String browser){
+        Log.info("Setup");
         driver =  getDriverBrowser(browser);
         passwordRecoveryPage = PasswordRecoveryPageGenerator.getPasswordRecoverynPageObject(driver);
         homePage = HomePageGenerator.getHomePageObject(driver);
@@ -36,5 +38,10 @@ public class PasswordRecoveryTest extends BaseTest {
         passwordRecoveryPage.inputEmailAddress("uyenntt1@yopmail.com");
         passwordRecoveryPage.clickRecoverBtn();
         verifyTrue(passwordRecoveryPage.isNotificationCorrect("Email with instructions has been sent to you."));
+    }
+    @AfterTest
+    public void tearDown(){
+        Log.info("Tear down");
+        driver.quit();
     }
 }

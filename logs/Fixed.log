@@ -1,0 +1,9 @@
+[14-09-2023 17:23:25.438 INFO com.vmo.nopcommerce.helper.Log] - ChangExchange
+[16-09-2023 21:03:14.674 INFO com.vmo.nopcommerce.helper.Log] - Setup
+[16-09-2023 21:03:55.372 INFO com.vmo.nopcommerce.helper.Log] - Click News Article
+[16-09-2023 21:03:56.426 INFO com.vmo.nopcommerce.helper.Log] - Check Article Title Correct
+[16-09-2023 21:03:56.457 INFO com.vmo.nopcommerce.helper.Log] - Input comment
+[16-09-2023 21:03:56.807 INFO com.vmo.nopcommerce.helper.Log] - Click New comment button
+[16-09-2023 21:03:57.551 INFO com.vmo.nopcommerce.helper.Log] - Check comment result correct
+[16-09-2023 21:03:57.580 INFO com.vmo.nopcommerce.helper.Log] - Check comment added
+[16-09-2023 21:03:57.691 INFO com.vmo.nopcommerce.helper.Log] - Tear down

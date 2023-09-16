@@ -2,6 +2,7 @@ package com.vmo.nopcommerce.pageobject.softwarepage;
 
 import com.vmo.nopcommerce.common.BasePage;
 import com.vmo.nopcommerce.common.GlobalConstants;
+import com.vmo.nopcommerce.helper.Log;
 import com.vmo.nopcommerce.interfaces.SoftwarePageUI;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,14 +18,17 @@ public class SoftwarePageObject extends BasePage {
         this.driver = driver;
     }
     public void selectSortBy(String option){
+        Log.info("Select Sort by");
         selectItemInDefaultDropdownByText(driver, SoftwarePageUI.SORT_BY,option);
     }
 
     public String getSelectedSortBy() {
+        Log.info("Get selected Sort by");
         return getSelectedItemInDefaultDropdown(driver, SoftwarePageUI.SORT_BY);
     }
 
     public boolean isSortZtoAWorked() {
+        Log.info("Check sort A-Z worked");
         overrideImplicitTimeOut(driver, GlobalConstants.LONG_TIMEOUT);
         List<String> productNames = getTextElements(driver, SoftwarePageUI.PRODUCT_LIST);
         List<String> sortedProductNames = new ArrayList<>(productNames);
@@ -38,11 +42,12 @@ public class SoftwarePageObject extends BasePage {
         }
     }
 
-    public void isSortSelected(String option) {
+    public boolean isSortSelected(String option) {
+        Log.info("Check sort selected");
         if (getSelectedSortBy().equals(option)) {
-            System.out.println("Sort option is selected.");
+            return true;
         } else {
-            System.out.println("Sort option verification failed.");
+            return false;
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.vmo.nopcommerce.pageobject.registrationpage;
 
 import com.vmo.nopcommerce.common.BasePage;
+import com.vmo.nopcommerce.helper.Log;
 import com.vmo.nopcommerce.interfaces.RegistrationPageUI;
 import org.openqa.selenium.WebDriver;
 
@@ -12,9 +13,11 @@ public class RegistrationPageObject extends BasePage {
     }
 
     public String getTitle(){
+        Log.info("Get title");
         return getTextElement(driver, RegistrationPageUI.TITLE);
     }
     public void fillRegistrationForm() {
+        Log.info("Fill Registration Form");
         clickToElement(driver,RegistrationPageUI.GENDER_FEMALE);
         sendKeyToElement(driver,RegistrationPageUI.FIRST_NAME_INPUT,"Ashley");
         sendKeyToElement(driver,RegistrationPageUI.LAST_NAME_INPUT,"Nguyen");
@@ -26,9 +29,11 @@ public class RegistrationPageObject extends BasePage {
         sendKeyToElement(driver,RegistrationPageUI.CONFIRM_PASSWORD_INPUT,"Uyen06102000");
     }
     public void submitForm(){
+        Log.info("Submit form");
         clickToElement(driver,RegistrationPageUI.REGISTER_BTN);
     }
     public String getMessage(){
+        Log.info("Get message");
         return getTextElement(driver, RegistrationPageUI.REGISTRATION_MESSAGE);
     }
 }
